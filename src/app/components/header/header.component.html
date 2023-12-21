@@ -1,19 +1,25 @@
-<div class="flex-container header-container">
-    <div class="flex-container header-info-container">
-      <div class="flex-container header-items-outer-container">
-        <div class="flex-container header-items-inner-container">
-          <a href="#">Home</a>
-          <a href="#">Shop</a>
-          <a href="#">Account</a>
-          <a href="#">Pages</a>
-          <a href="#">Blog</a>
-          <a href="#">Docs/Components</a>
+<header [ngClass]="themeColor === 'white' ? 'white-theme' : 'black-theme'">
+  <div class="flex-container header-container">
+      <div class="flex-container header-info-container">
+        <div class="flex-container header-items-outer-container">
+          <div class="flex-container header-items-inner-container hides">
+            <a href="#">Home</a>
+            <a href="#">Shop</a>
+            <a href="#">Account</a>
+            <a href="#">Pages</a>
+            <a href="#">Blog</a>
+            <a href="#">Docs/Components</a>
+          </div>
+        </div>
+        <div class="flex-container header-main-container">
+          <a href="#" class="flex-container avatar-container hides"><img src='../../../assets/images/user.png' class="flex-container circle margin-right-v1"><span>My Account</span></a>
+          <a href="#" class="hides"><img src='../../../assets/images/carbon_favorite.png'></a>
+          <a href="#"><img src='../../../assets/images/shopping_card.png' class="flex-container circle margin-right-v1"></a>
+          <!--TODO: make a shopping_card.png with material badge-->
+          <a href="#" class="hidden"><img src='../../../assets/images/bx_menu_alt_right.png'></a>
+          <!--TODO: this is out of container in mobile version - fix it-->
+          <!--TODO: black/white change icon colour-->
         </div>
       </div>
-      <div class="flex-container header-main-container">
-        <a href="#" class="flex-container avatar-container"><img src='../../../assets/images/user.png' class="flex-container circle"><span class="text-class">My Account</span></a>
-        <a href="#"><img src='../../../assets/images/carbon_favorite.png'></a>
-        <a href="#"><img src='../../../assets/images/shopping_card.png' class="flex-container circle"></a>
-      </div>
-    </div>
-</div>
+  </div>
+</header>

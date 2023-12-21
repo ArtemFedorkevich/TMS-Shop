@@ -1,7 +1,7 @@
-app-header, app-footer {
+app-header{
   position: absolute;
   width: 100%;
-  z-index: 1000; /* ensure the header and footer appear above other elements */
+  z-index: 1000; /* ensure the header appear above other elements */
 }
 
 app-header {
@@ -13,6 +13,6 @@ app-footer {
 }
 
 router-outlet {
-  position: relative; /* to ensure it stacks below the header and above the footer */
-  z-index: 1; /* to ensure the router outlet content appears above the background (if any) of the header or footer */
+  position: relative; /* to ensure it stacks below the header */
+  z-index: 1; /* to ensure the router outlet content appears above the background (if any) of the header */
 }
