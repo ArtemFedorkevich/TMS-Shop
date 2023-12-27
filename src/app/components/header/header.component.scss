@@ -66,9 +66,11 @@
   background: rgba(232, 232, 232, 0.40);
 
 }
+
 .margin-right-v1 {
     margin-right: 20px;
 }
+
 a {
     text-decoration: none;
     font-family: 'Montserrat';
@@ -86,6 +88,13 @@ a {
 
 .black-theme .flex-container {
   background-color: white;
+}
+
+.black-theme .circle {
+  border-radius: 66px;
+  border: 1px solid rgba(255, 255, 255, 0.50);
+  background: rgba(232, 232, 232, 0.40);
+
 }
 
 .white-theme a {
