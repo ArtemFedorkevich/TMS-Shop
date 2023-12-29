@@ -2,8 +2,7 @@
   <div class="col-md-4">
     <h1>Sign up</h1>
     <hr><br>
-<!--    TODO: Input validation-->
-    <form (ngSubmit)="onSubmit()" >
+    <form (ngSubmit)="onSubmit()" ngNativeValidate>
       <div class="form-group">
         <label for="email">Email</label>
         <input
@@ -26,6 +25,7 @@
           id="password"
           placeholder="enter a password">
       </div>
+      <br>
       <button mat-raised-button color="primary" type="submit">Submit</button>
       <button mat-raised-button color="success" [routerLink]="['/account']">Cancel</button>
     </form>
