@@ -1,12 +1,7 @@
 <header>
   <div class="flex-container footer-container">
     <div class="flex-container footer-info-container direction">
-      <a href="#">Home</a>
-      <a href="#">Shop</a>
-      <a href="#">Account</a>
-      <a href="#">Pages</a>
-      <a href="#">Blog</a>
-      <a href="#">Docs/Components</a>
+      <a *ngFor="let item of footerItems" href="#">{{ item }}</a>
     </div>
   </div>
 </header>
