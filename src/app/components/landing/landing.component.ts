@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 
-import { User } from '../../models/user';
-import { AppState } from '../../../store/states/app.states';
+import { AppState, selectAccountState } from '../../../store/states/app.states';
 import { LogOut } from '../../../store/actions/account.actions';
+
 
 
 @Component({
@@ -14,16 +15,29 @@ import { LogOut } from '../../../store/actions/account.actions';
 
 export class LandingComponent implements OnInit {
 
+  getState: Observable<any>;
+  isAuthenticated: boolean;
+  user = {'email': ''};
+  errorMessage = null;
+
   constructor(
     private store: Store<AppState>
-  ) {}
-
-  ngOnInit() {
+  ) {
+    this.getState = this.store.select(selectAccountState);
+    this.isAuthenticated = false;
   }
 
+  ngOnInit() {
+    this.getState.subscribe((state) => {
+      this.isAuthenticated = state.isAuthenticated;
+      this.user = state.user;
+      this.errorMessage = state.errorMessage;
+    });
+  }
+
+  // TODO: move logout to headers
   logOut(): void {
     this.store.dispatch(new LogOut);
   }
 
 }
-
