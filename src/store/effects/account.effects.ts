@@ -35,7 +35,7 @@ export class AccountEffects {
     tap((action: LogInSuccess) => {
       localStorage.setItem('accessToken', action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
-      this.router.navigateByUrl('/');
+      this.router.navigateByUrl('/'); // TODO: redirect to original page
     })
   ),
   { dispatch: false });

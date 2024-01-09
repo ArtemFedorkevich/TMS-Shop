@@ -16,19 +16,19 @@ import { LogOut } from '../../../store/actions/account.actions';
 export class LandingComponent implements OnInit {
 
   getState: Observable<any>;
-  isAuthenticated: boolean;
-  user = {'email': ''};
+  isAuthenticated: boolean = false;
+  user = {'email': '', 'accessToken': '', 'refreshToken':''};
   errorMessage = null;
 
   constructor(
     private store: Store<AppState>
   ) {
     this.getState = this.store.select(selectAccountState);
-    this.isAuthenticated = false;
   }
 
   ngOnInit() {
     this.getState.subscribe((state) => {
+      console.log(state)
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.errorMessage = state.errorMessage;

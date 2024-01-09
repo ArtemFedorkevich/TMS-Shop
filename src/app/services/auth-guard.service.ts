@@ -11,7 +11,7 @@ class PermissionsService {
     ) {}
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        const token = this.accountService.getToken();
+        const token = this.accountService.getToken('accessToken');
         if (token && token !== 'undefined') {
             // authorised so return true
             return true;

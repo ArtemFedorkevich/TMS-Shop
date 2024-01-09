@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { THEME_COLORS } from "./constants/app.constants";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,7 @@ import { Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'TMS-Shop';
-  headerColor: 'black' | 'white' = 'white';
+  headerColor: typeof THEME_COLORS.BLACK | typeof THEME_COLORS.WHITE = THEME_COLORS.WHITE;
   private ngUnsubscribe = new Subject<void>();
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -28,7 +29,8 @@ export class AppComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  
+  }
+
   shouldShowHeaderAndFooter(): boolean {
     return !this.router.url.includes('/account');
   }

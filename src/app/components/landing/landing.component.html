@@ -12,5 +12,20 @@
       <button mat-raised-button color="primary" [routerLink]="['/account/register']">Sign up</button>
     </ng-template>
   </div>
+
+  <br><br><br>
+
+  <div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">Current State</h5>
+      <ul>
+        <li><strong>isAuthenticated</strong> - {{isAuthenticated}}</li>
+        <li><strong>user.email</strong> - {{ user?.email || 'null'}}</li>
+        <li><strong>user.accessToken</strong> - {{ user?.accessToken || 'null'}}</li>
+        <li><strong>user.refreshToken</strong> - {{ user?.refreshToken || 'null'}}</li>
+        <li><strong>errorMessage</strong> - {{ errorMessage || 'null'}}</li>
+      </ul>
+    </div>
+  </div>
 </div>
-<!--TODO: move logout to headers-->
+

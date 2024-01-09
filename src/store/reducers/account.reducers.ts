@@ -1,5 +1,7 @@
 import { User } from '../../app/models/user';
 import { AuthActionTypes, All } from '../actions/account.actions';
+// import { localStorageSync } from 'ngrx-store-localstorage';
+import { ActionReducer} from '@ngrx/store';
 
 export const initialState: State = {
   isAuthenticated: false,
@@ -59,3 +61,7 @@ export function reducer(state = initialState, action: All): State {
     }
   }
 }
+
+// export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
+//   return localStorageSync({ keys: ['state'], rehydrate: true })(reducer);
+// }
