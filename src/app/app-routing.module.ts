@@ -7,8 +7,9 @@ const accountModule = () => import('./modules/account.module').then(x => x.Accou
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent, canActivate: [AuthGuard], },
+  { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'account', loadChildren: accountModule },
+  { path: 'products', component: HomeComponent, data: { headerColor: 'black' }, canActivate: [AuthGuard] },  // TODO: add other component
 ];
 
 @NgModule({

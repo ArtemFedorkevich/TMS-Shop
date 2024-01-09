@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
 import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule} from "./modules/material/material.module";
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
@@ -23,10 +24,10 @@ import { reducers } from '../store/states/app.states';
   imports: [
     EffectsModule.forRoot([AccountEffects]),
     StoreModule.forRoot(reducers, {}),
-    BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule
+    MaterialModule
   ],
   providers: [AccountService],
   bootstrap: [AppComponent]
