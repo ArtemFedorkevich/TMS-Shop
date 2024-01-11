@@ -15,16 +15,10 @@ export class TokenInterceptor implements HttpInterceptor {
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.accountService = this.injector.get(AccountService);
     const accessToken: string | null = this.accountService.getToken('accessToken');
-    const refreshToken: string | null = this.accountService.getToken('refreshToken');
     const headers: { [key: string]: string } = {
       'Authorization': `Bearer ${accessToken}`,
       'Content-Type': 'application/json'
     };
-
-    if (refreshToken !== null) {
-      headers['Refresh-Token'] = refreshToken;
-    }
-
     request = request.clone({ setHeaders: headers });
     return next.handle(request);
   }

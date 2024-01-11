@@ -35,7 +35,6 @@ export class LandingComponent implements OnInit {
     });
   }
 
-  // TODO: move logout to headers
   logOut(): void {
     this.store.dispatch(new LogOut);
   }
