@@ -14,6 +14,7 @@ class PermissionsService {
         const token = this.accountService.getToken('accessToken');
         if (token && token !== 'undefined') {
             // authorised so return true
+            // TODO: make state isAuthentificated == True?
             return true;
         }
 
