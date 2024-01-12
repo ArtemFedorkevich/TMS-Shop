@@ -36,7 +36,7 @@ export class LandingComponent implements OnInit {
   }
 
   logOut(): void {
-    this.store.dispatch(new LogOut);
+    this.store.dispatch(LogOut());
   }
 
 }

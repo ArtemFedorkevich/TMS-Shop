@@ -16,15 +16,15 @@ export class AccountEffects {
   LogIn = createEffect(() =>
   this.actions.pipe(
     ofType(AuthActionTypes.LOGIN),
-    map((action: LogIn) => action.payload),
+    map((action: ReturnType<typeof LogIn>) => action.payload),
     switchMap(payload => this.accountService.logIn(payload.email, payload.password).pipe(
       map(user => {
         console.log(user);
-        return new LogInSuccess({accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email});
+        return LogInSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
       }),
       catchError(error => {
         console.log(error);
-        return of(new LogInFailure({ error: error }));
+        return of(LogInFailure({payload: { error: error }}));
       })
     ))
   )
@@ -32,7 +32,7 @@ export class AccountEffects {
 
   LogInSuccess = createEffect(() => this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
-    tap((action: LogInSuccess) => {
+    tap((action: ReturnType<typeof LogInSuccess>) => {
       localStorage.setItem('accessToken', action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
       this.router.navigateByUrl('/'); // TODO: redirect to original page
@@ -50,15 +50,15 @@ export class AccountEffects {
   RegisterUp = createEffect(() =>
   this.actions.pipe(
     ofType(AuthActionTypes.REGISTER),
-    map((action: LogIn) => action.payload),
+    map((action: ReturnType<typeof RegisterUp>) => action.payload),
     switchMap(payload => this.accountService.register(payload.email, payload.password).pipe(
       map(user => {
         console.log(user);
-        return new RegisterSuccess({accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email});
+        return RegisterSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
       }),
       catchError(error => {
         console.log(error);
-        return of(new RegisterFailure({ error: error }));
+        return of(RegisterFailure({payload: { error: error }}));
       })
     ))
   )
@@ -66,7 +66,7 @@ export class AccountEffects {
 
   RegisterSuccess = createEffect(() => this.actions.pipe(
     ofType(AuthActionTypes.REGISTER_SUCCESS),
-    tap((action: RegisterSuccess) => {
+    tap((action: ReturnType<typeof RegisterSuccess>) => {
       localStorage.setItem('accessToken', action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
       this.router.navigateByUrl('/');

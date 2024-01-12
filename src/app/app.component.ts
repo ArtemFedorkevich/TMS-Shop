@@ -12,6 +12,7 @@ import { THEME_COLORS } from "./constants/app.constants";
 export class AppComponent implements OnInit, OnDestroy {
   title = 'TMS-Shop';
   headerColor: typeof THEME_COLORS.BLACK | typeof THEME_COLORS.WHITE = THEME_COLORS.WHITE;
+  shouldShowHeaderAndFooter: boolean = true;
   private ngUnsubscribe = new Subject<void>();
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -23,16 +24,13 @@ export class AppComponent implements OnInit, OnDestroy {
     ).subscribe(() => {
       const currentRouteData = this.route.snapshot.firstChild?.data;
       this.headerColor = currentRouteData?.['headerColor'] || 'white';
+      this.shouldShowHeaderAndFooter = !this.router.url.includes('/account');
     });
   }
 
   ngOnDestroy(): void {
     this.ngUnsubscribe.next();
     this.ngUnsubscribe.complete();
-  }
-
-  shouldShowHeaderAndFooter(): boolean {
-    return !this.router.url.includes('/account');
   }
 }
 

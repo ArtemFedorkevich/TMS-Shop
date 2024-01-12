@@ -6,6 +6,7 @@
     <ng-template #doSomething>
       <p>You logged in <em>{{user.email}}!</em></p>
       <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+      <!--      TODO: add return button-->
     </ng-template>
     <ng-template #doSomethingElse>
       <button mat-raised-button color="primary" [routerLink]="['/account/login']">Log in</button>

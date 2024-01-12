@@ -12,7 +12,6 @@ import { LogIn } from '../../../store/actions/account.actions';
   styleUrl: './login.component.css'
 })
 export class LoginComponent implements OnInit {
-
   user: User = new User();
   getState: Observable<any>;
   errorMessage: string | null;
@@ -35,7 +34,7 @@ export class LoginComponent implements OnInit {
       email: this.user.email,
       password: this.user.password
     };
-    this.store.dispatch(new LogIn(payload));
+    this.store.dispatch(LogIn({payload}));
   }
 
 }

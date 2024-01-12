@@ -18,7 +18,7 @@ class PermissionsService {
         }
 
         // not logged in so redirect to login page
-        // TODO: redirect ??, use state??
+        // TODO: redirect to original page after login??
         this.router.navigate(['/account']);
         return false;
     }

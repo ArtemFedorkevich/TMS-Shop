@@ -35,8 +35,7 @@ export class RegisterComponent implements OnInit {
       email: this.user.email,
       password: this.user.password
     };
-    this.store.dispatch(new RegisterUp(payload));
+    this.store.dispatch(RegisterUp({payload}));
   }
-
 }
 

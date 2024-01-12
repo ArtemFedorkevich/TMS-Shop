@@ -1,7 +1,6 @@
 import { User } from '../../app/models/user';
-import { AuthActionTypes, All } from '../actions/account.actions';
-// import { localStorageSync } from 'ngrx-store-localstorage';
-import { ActionReducer} from '@ngrx/store';
+import { LogInSuccess, LogInFailure, RegisterSuccess, RegisterFailure, LogOut } from '../actions/account.actions';
+import { createReducer, on } from '@ngrx/store';
 
 export const initialState: State = {
   isAuthenticated: false,
@@ -15,53 +14,29 @@ export interface State {
   errorMessage: string | null;
 }
 
-export function reducer(state = initialState, action: All): State {
-  switch (action.type) {
-    case AuthActionTypes.LOGIN_SUCCESS: {
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: {
-          accessToken: action.payload.accessToken,
-          refreshToken: action.payload.refreshToken,
-          email: action.payload.email
-        },
-        errorMessage: null
-      };
-    }
-    case AuthActionTypes.REGISTER_SUCCESS: {
-      return {
-        ...state,
-        isAuthenticated: true,
-        user: {
-          accessToken: action.payload.accessToken,
-          refreshToken: action.payload.refreshToken,
-          email: action.payload.email
-        },
-        errorMessage: null
-      };
-    }
-    case AuthActionTypes.LOGIN_FAILURE: {
-      return {
-        ...state,
-        errorMessage: 'Incorrect email and/or password.'
-      };
-    }
-    case AuthActionTypes.REGISTER_FAILURE: {
-      return {
-        ...state,
-        errorMessage: 'That email is already in use.'
-      };
-    }
-    case AuthActionTypes.LOGOUT: {
-      return initialState;
-    }
-    default: {
-      return state;
-    }
-  }
-}
-
-// export function localStorageSyncReducer(reducer: ActionReducer<any>): ActionReducer<any> {
-//   return localStorageSync({ keys: ['state'], rehydrate: true })(reducer);
-// }
+export const reducer = createReducer(
+  initialState,
+  on(
+    LogInSuccess,
+    RegisterSuccess,
+    (state, action) => ({
+      ...state,
+      isAuthenticated: true,
+      user: {
+        accessToken: action.payload.accessToken,
+        refreshToken: action.payload.refreshToken,
+        email: action.payload.email
+      },
+      errorMessage: null
+    })
+  ),
+  on(LogInFailure, () => ({
+    ...initialState,
+    errorMessage: 'Incorrect email and/or password.'
+  })),
+  on(RegisterFailure, () => ({
+    ...initialState,
+    errorMessage: 'That email is already in use.'
+  })),
+  on(LogOut, () => initialState)
+);

@@ -1,4 +1,4 @@
-import { Action } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
 
 
 export enum AuthActionTypes {
@@ -11,45 +11,45 @@ export enum AuthActionTypes {
   LOGOUT = '[Auth] Logout',
 }
 
-export class LogIn implements Action {
-  readonly type = AuthActionTypes.LOGIN;
-  constructor(public payload: any) {}
-}
+export const LogIn = createAction(
+  AuthActionTypes.LOGIN,
+  props<{ payload: any }>()
+);
 
-export class LogInSuccess implements Action {
-  readonly type = AuthActionTypes.LOGIN_SUCCESS;
-  constructor(public payload: any) {}
-}
+export const LogInSuccess = createAction(
+  AuthActionTypes.LOGIN_SUCCESS,
+  props<{ payload: any }>()
+);
 
-export class LogInFailure implements Action {
-  readonly type = AuthActionTypes.LOGIN_FAILURE;
-  constructor(public payload: any) {}
-}
+export const LogInFailure = createAction(
+  AuthActionTypes.LOGIN_FAILURE,
+  props<{ payload: any }>()
+);
 
-export class RegisterUp implements Action {
-  readonly type = AuthActionTypes.REGISTER;
-  constructor(public payload: any) {}
-}
+export const RegisterUp = createAction(
+  AuthActionTypes.REGISTER,
+  props<{ payload: any }>()
+);
 
-export class RegisterSuccess implements Action {
-  readonly type = AuthActionTypes.REGISTER_SUCCESS;
-  constructor(public payload: any) {}
-}
+export const RegisterSuccess = createAction(
+  AuthActionTypes.REGISTER_SUCCESS,
+  props<{ payload: any }>()
+);
 
-export class RegisterFailure implements Action {
-  readonly type = AuthActionTypes.REGISTER_FAILURE;
-  constructor(public payload: any) {}
-}
+export const RegisterFailure = createAction(
+  AuthActionTypes.REGISTER_FAILURE,
+  props<{ payload: any }>()
+);
 
-export class LogOut implements Action {
-  readonly type = AuthActionTypes.LOGOUT;
-}
+export const LogOut = createAction(
+  AuthActionTypes.LOGOUT,
+);
 
 export type All =
-  | LogIn
-  | LogInSuccess
-  | LogInFailure
-  | RegisterUp
-  | RegisterSuccess
-  | RegisterFailure
-  | LogOut;
+  | ReturnType<typeof LogIn>
+  | ReturnType<typeof LogInSuccess>
+  | ReturnType<typeof LogInFailure>
+  | ReturnType<typeof RegisterUp>
+  | ReturnType<typeof RegisterSuccess>
+  | ReturnType<typeof RegisterFailure>
+  | ReturnType<typeof LogOut>;
