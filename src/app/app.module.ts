@@ -6,7 +6,6 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
@@ -20,7 +19,6 @@ import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
     FooterComponent,
   ],
   imports: [

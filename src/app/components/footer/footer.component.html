@@ -1,7 +1,10 @@
 <header>
   <div class="flex-container footer-container">
-    <div class="flex-container footer-info-container direction">
-      <a *ngFor="let item of footerItems" href="#">{{ item }}</a>
+    <div class="flex-container footer-info-container">
+      <div class="flex-container footer-text-container direction">
+        <a *ngFor="let item of footerItems" href="#">{{ item }}</a>
+        <!--      TODO:change to routerlink-->
+      </div>
     </div>
   </div>
 </header>

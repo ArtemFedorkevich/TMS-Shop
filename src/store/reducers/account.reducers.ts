@@ -1,4 +1,4 @@
-import { User } from '../../app/models/user';
+import { UserModel } from '../../app/models/user.model';
 import { LogInSuccess, LogInFailure, RegisterSuccess, RegisterFailure, LogOut } from '../actions/account.actions';
 import { createReducer, on } from '@ngrx/store';
 
@@ -10,7 +10,7 @@ export const initialState: State = {
 
 export interface State {
   isAuthenticated: boolean;
-  user: User | null;
+  user: UserModel | null;
   errorMessage: string | null;
 }
 

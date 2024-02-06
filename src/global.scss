@@ -1,1 +1,15 @@
 @import '@angular/material/prebuilt-themes/purple-green.css';
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/montserrat-regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('./assets/fonts/montserrat-bold.ttf');
+  font-weight: bold;
+  font-style: italic;
+}

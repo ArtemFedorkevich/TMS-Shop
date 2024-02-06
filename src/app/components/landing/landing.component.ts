@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 import { AppState, selectAccountState } from '../../../store/states/app.states';
 import { LogOut } from '../../../store/actions/account.actions';
@@ -21,7 +22,8 @@ export class LandingComponent implements OnInit {
   errorMessage = null;
 
   constructor(
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private location: Location
   ) {
     this.getState = this.store.select(selectAccountState);
   }
@@ -39,4 +41,7 @@ export class LandingComponent implements OnInit {
     this.store.dispatch(LogOut());
   }
 
+  goBack() {
+  this.location.back();
+  }
 }

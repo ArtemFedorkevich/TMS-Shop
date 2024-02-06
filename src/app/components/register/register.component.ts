@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { User } from '../../models/user';
+import { UserModel } from '../../models/user.model';
 import {AppState, selectAccountState} from '../../../store/states/app.states';
 import { RegisterUp } from '../../../store/actions/account.actions';
 
@@ -13,7 +13,7 @@ import { RegisterUp } from '../../../store/actions/account.actions';
 })
 export class RegisterComponent implements OnInit {
 
- user: User = new User();
+ user: UserModel = new UserModel();
   getState: Observable<any>;
   errorMessage: string | null;
 
