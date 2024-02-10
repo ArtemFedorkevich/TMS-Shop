@@ -2,8 +2,7 @@
   <div class="flex-container footer-container">
     <div class="flex-container footer-info-container">
       <div class="flex-container footer-text-container direction">
-        <a *ngFor="let item of footerItems" href="#">{{ item }}</a>
-        <!--      TODO:change to routerlink-->
+        <a *ngFor="let item of footerItems"  [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
       </div>
     </div>
   </div>

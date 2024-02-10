@@ -5,7 +5,7 @@
       <h3 class="white">SUMMER {{currentYear}}</h3>
       <h1 class="white"><b>New Collection</b></h1>
       <h4 class="white">Find The Perfect style for you</h4>
-      <button class="logo-button" [routerLink]="['#']">
+      <button class="logo-button" [routerLink]="'/products'" routerLinkActive="active">
         Shop Now
       </button>
   </div>
@@ -15,7 +15,8 @@
       <div class="flex-container category-container">
         <img [src]="getCategoryImageUrl(category.translation)" alt="{{ category.translation }}">
         <div class="category-overlay-content">
-          <button class="category-button" [routerLink]="['#']">{{ category.translation }}</button>
+          <button class="category-button" [routerLink]="'/products'">{{ category.translation }}</button>
+          <!--TODO: Add filtering by category (front + back)-->
         </div>
       </div>
     </div>
@@ -82,6 +83,7 @@
             <div class="flex-container row-container">
               <div *ngFor="let color of item.colors" class="flex-container circle" [style.background-color]="color"></div>
             </div>
+            <!--TODO: Add favorite icon + logic (front + back)-->
             <br>
             <div class="flex-container row-container">
               <div *ngFor="let size of item.sizes" class="flex-container rectangle">

@@ -3,7 +3,7 @@
       <div class="flex-container header-info-container">
         <div class="flex-container header-items-outer-container">
           <div class="flex-container header-items-inner-container hides">
-            <a *ngFor="let item of headerItems" href="#">{{ item }}</a>
+            <a *ngFor="let item of headerItems"  [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
           </div>
         </div>
         <div class="flex-container header-main-container">
