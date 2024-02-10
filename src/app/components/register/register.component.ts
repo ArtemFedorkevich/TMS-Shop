@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserModel } from '../../models/user.model';
 import {AppState, selectAccountState} from '../../../store/states/app.states';
-import { RegisterUp } from '../../../store/actions/account.actions';
+import { registerUp } from '../../../store/actions/account.actions';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +35,7 @@ export class RegisterComponent implements OnInit {
       email: this.user.email,
       password: this.user.password
     };
-    this.store.dispatch(RegisterUp({payload}));
+    this.store.dispatch(registerUp({payload}));
   }
 }
 

@@ -13,7 +13,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { AccountService } from './services/account.service';
 import { AccountEffects } from '../store/effects/account.effects';
 import { reducers } from '../store/states/app.states';
-import { TokenInterceptor, ErrorInterceptor } from './services/token.interceptor';
+import { TokenInterceptor } from './services/token.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
+
 
 @NgModule({
   declarations: [

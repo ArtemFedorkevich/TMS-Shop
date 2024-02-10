@@ -2,37 +2,36 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { AccountService } from '../../app/services/account.service';
 import {
   AuthActionTypes,
-  LogIn, LogInSuccess, LogInFailure, RegisterUp, RegisterSuccess, RegisterFailure, LogOut
+  logIn, logInSuccess, logInFailure, registerUp, registerSuccess, registerFailure
 } from '../actions/account.actions';
+
 
 @Injectable()
 export class AccountEffects {
 
-  LogIn = createEffect(() =>
+  logIn = createEffect(() =>
   this.actions.pipe(
     ofType(AuthActionTypes.LOGIN),
-    map((action: ReturnType<typeof LogIn>) => action.payload),
+    map((action: ReturnType<typeof logIn>) => action.payload),
     switchMap(payload => this.accountService.logIn(payload.email, payload.password).pipe(
       map(user => {
-        console.log(user);
-        return LogInSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
+        return logInSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
       }),
       catchError(error => {
-        console.log(error);
-        return of(LogInFailure({payload: { error: error }}));
+        return of(logInFailure({payload: { error: error }}));
       })
     ))
   )
 );
 
-  LogInSuccess = createEffect(() => this.actions.pipe(
+  logInSuccess = createEffect(() => this.actions.pipe(
     ofType(AuthActionTypes.LOGIN_SUCCESS),
-    tap((action: ReturnType<typeof LogInSuccess>) => {
+    tap((action: ReturnType<typeof logInSuccess>) => {
       localStorage.setItem('accessToken', action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
       this.router.navigateByUrl('/'); // TODO: redirect to original page
@@ -40,33 +39,31 @@ export class AccountEffects {
   ),
   { dispatch: false });
 
-  LogInFailure = createEffect(() =>
+  logInFailure = createEffect(() =>
     this.actions.pipe(
       ofType(AuthActionTypes.LOGIN_FAILURE)
     ),
     { dispatch: false }
   );
 
-  RegisterUp = createEffect(() =>
+  registerUp = createEffect(() =>
   this.actions.pipe(
     ofType(AuthActionTypes.REGISTER),
-    map((action: ReturnType<typeof RegisterUp>) => action.payload),
+    map((action: ReturnType<typeof registerUp>) => action.payload),
     switchMap(payload => this.accountService.register(payload.email, payload.password).pipe(
       map(user => {
-        console.log(user);
-        return RegisterSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
+        return registerSuccess({payload: {accessToken: user.accessToken, refreshToken: user.refreshToken, email: payload.email}});
       }),
       catchError(error => {
-        console.log(error);
-        return of(RegisterFailure({payload: { error: error }}));
+        return of(registerFailure({payload: { error: error }}));
       })
     ))
   )
 );
 
-  RegisterSuccess = createEffect(() => this.actions.pipe(
+  registerSuccess = createEffect(() => this.actions.pipe(
     ofType(AuthActionTypes.REGISTER_SUCCESS),
-    tap((action: ReturnType<typeof RegisterSuccess>) => {
+    tap((action: ReturnType<typeof registerSuccess>) => {
       localStorage.setItem('accessToken', action.payload.accessToken);
       localStorage.setItem('refreshToken', action.payload.refreshToken);
       this.router.navigateByUrl('/');
@@ -74,14 +71,14 @@ export class AccountEffects {
   ),
   { dispatch: false });
 
-  RegisterFailure = createEffect(() =>
+  registerFailure = createEffect(() =>
     this.actions.pipe(
       ofType(AuthActionTypes.REGISTER_FAILURE)
     ),
     { dispatch: false }
   );
 
-  LogOut = createEffect(() => {
+  logOut = createEffect(() => {
   return this.actions.pipe(
     ofType(AuthActionTypes.LOGOUT),
     tap(() => {

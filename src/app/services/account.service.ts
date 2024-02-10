@@ -13,11 +13,11 @@ export class AccountService {
     return localStorage.getItem(key);
   }
 
-  logIn(email: string, password: string): Observable<any> {
+  logIn(email: string | undefined, password: string | undefined): Observable<any> {
       return this.http.post<UserModel>(`${environment.backendUrl}/auth/sign-in`, {email, password});
     }
 
-  register(email: string, password: string): Observable<any> {
+  register(email: string | undefined, password: string | undefined): Observable<any> {
     return this.http.post<UserModel>(`${environment.backendUrl}/auth/sign-up`, {email, password});
   }
 

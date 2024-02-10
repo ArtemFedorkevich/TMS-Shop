@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 import { UserModel } from '../../models/user.model';
 import { AppState, selectAccountState } from '../../../store/states/app.states';
-import { LogIn } from '../../../store/actions/account.actions';
+import { logIn } from '../../../store/actions/account.actions';
 
 @Component({
   selector: 'app-login',
@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       email: this.user.email,
       password: this.user.password
     };
-    this.store.dispatch(LogIn({payload}));
+    this.store.dispatch(logIn({payload}));
   }
 
 }

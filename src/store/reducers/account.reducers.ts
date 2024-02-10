@@ -1,5 +1,5 @@
 import { UserModel } from '../../app/models/user.model';
-import { LogInSuccess, LogInFailure, RegisterSuccess, RegisterFailure, LogOut } from '../actions/account.actions';
+import { logInSuccess, logInFailure, registerSuccess, registerFailure, logOut } from '../actions/account.actions';
 import { createReducer, on } from '@ngrx/store';
 
 export const initialState: State = {
@@ -17,8 +17,8 @@ export interface State {
 export const reducer = createReducer(
   initialState,
   on(
-    LogInSuccess,
-    RegisterSuccess,
+    logInSuccess,
+    registerSuccess,
     (state, action) => ({
       ...state,
       isAuthenticated: true,
@@ -30,13 +30,13 @@ export const reducer = createReducer(
       errorMessage: null
     })
   ),
-  on(LogInFailure, () => ({
+  on(logInFailure, () => ({
     ...initialState,
     errorMessage: 'Incorrect email and/or password.'
   })),
-  on(RegisterFailure, () => ({
+  on(registerFailure, () => ({
     ...initialState,
     errorMessage: 'That email is already in use.'
   })),
-  on(LogOut, () => initialState)
+  on(logOut, () => initialState)
 );

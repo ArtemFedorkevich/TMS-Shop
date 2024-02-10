@@ -3,8 +3,9 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Location } from '@angular/common';
 
+import { UserModel } from '../../../app/models/user.model';
 import { AppState, selectAccountState } from '../../../store/states/app.states';
-import { LogOut } from '../../../store/actions/account.actions';
+import { logOut } from '../../../store/actions/account.actions';
 
 
 
@@ -18,7 +19,7 @@ export class LandingComponent implements OnInit {
 
   getState: Observable<any>;
   isAuthenticated: boolean = false;
-  user = {'email': '', 'accessToken': '', 'refreshToken':''};
+  user: UserModel = {'email': '', 'accessToken': '', 'refreshToken':''};
   errorMessage = null;
 
   constructor(
@@ -30,7 +31,6 @@ export class LandingComponent implements OnInit {
 
   ngOnInit() {
     this.getState.subscribe((state) => {
-      console.log(state)
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
       this.errorMessage = state.errorMessage;
@@ -38,7 +38,7 @@ export class LandingComponent implements OnInit {
   }
 
   logOut(): void {
-    this.store.dispatch(LogOut());
+    this.store.dispatch(logOut());
   }
 
   goBack() {

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-
+import { AuthCredentials, AuthFailurePayload, AuthSuccessPayload } from "./account.interfaces";
 
 export enum AuthActionTypes {
   LOGIN = '[Auth] Login',
@@ -11,45 +11,45 @@ export enum AuthActionTypes {
   LOGOUT = '[Auth] Logout',
 }
 
-export const LogIn = createAction(
+export const logIn = createAction(
   AuthActionTypes.LOGIN,
-  props<{ payload: any }>()
+  props<{ payload: AuthCredentials }>()
 );
 
-export const LogInSuccess = createAction(
+export const logInSuccess = createAction(
   AuthActionTypes.LOGIN_SUCCESS,
-  props<{ payload: any }>()
+  props<{ payload: AuthSuccessPayload }>()
 );
 
-export const LogInFailure = createAction(
+export const logInFailure = createAction(
   AuthActionTypes.LOGIN_FAILURE,
-  props<{ payload: any }>()
+  props<{ payload: AuthFailurePayload }>()
 );
 
-export const RegisterUp = createAction(
+export const registerUp = createAction(
   AuthActionTypes.REGISTER,
-  props<{ payload: any }>()
+  props<{ payload: AuthCredentials }>()
 );
 
-export const RegisterSuccess = createAction(
+export const registerSuccess = createAction(
   AuthActionTypes.REGISTER_SUCCESS,
-  props<{ payload: any }>()
+  props<{ payload: AuthSuccessPayload }>()
 );
 
-export const RegisterFailure = createAction(
+export const registerFailure = createAction(
   AuthActionTypes.REGISTER_FAILURE,
-  props<{ payload: any }>()
+  props<{ payload: AuthFailurePayload }>()
 );
 
-export const LogOut = createAction(
-  AuthActionTypes.LOGOUT,
+export const logOut = createAction(
+  AuthActionTypes.LOGOUT
 );
 
-export type All =
-  | ReturnType<typeof LogIn>
-  | ReturnType<typeof LogInSuccess>
-  | ReturnType<typeof LogInFailure>
-  | ReturnType<typeof RegisterUp>
-  | ReturnType<typeof RegisterSuccess>
-  | ReturnType<typeof RegisterFailure>
-  | ReturnType<typeof LogOut>;
+export type AllActionTypes =
+  | ReturnType<typeof logIn>
+  | ReturnType<typeof logInSuccess>
+  | ReturnType<typeof logInFailure>
+  | ReturnType<typeof registerUp>
+  | ReturnType<typeof registerSuccess>
+  | ReturnType<typeof registerFailure>
+  | ReturnType<typeof logOut>;
