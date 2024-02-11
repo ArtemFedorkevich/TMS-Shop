@@ -1,11 +1,10 @@
 app-header{
   position: absolute;
-  width: 100%;
   z-index: 1000; /* ensure the header appear above other elements */
-}
-
-app-header {
-  top: 0;
+  top:0;
+  width: 90.25rem;
+  left: 50%;   /* Position the left edge of the header at the horizontal center */
+  transform: translateX(-50%);
 }
 
 app-footer {

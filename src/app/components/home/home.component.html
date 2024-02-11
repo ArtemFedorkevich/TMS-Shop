@@ -1,3 +1,98 @@
-<div class="flex-container logo-container">
-  <img src='../../../assets/images/home_logo.jpeg'>
+<div class="flex-container home-container">
+  <div class="flex-container logo-container">
+    <img src='../../../assets/images/home_logo.jpeg'>
+    <div class="logo-overlay-content">
+      <h3 class="white">SUMMER {{currentYear}}</h3>
+      <h1 class="white"><b>New Collection</b></h1>
+      <h4 class="white">Find The Perfect style for you</h4>
+      <button class="logo-button" [routerLink]="'/products'" routerLinkActive="active">
+        Shop Now
+      </button>
+  </div>
+  </div>
+  <div class="flex-container categories-container">
+    <div *ngFor="let category of categories">
+      <div class="flex-container category-container">
+        <img [src]="getCategoryImageUrl(category.translation)" alt="{{ category.translation }}">
+        <div class="category-overlay-content">
+          <button class="category-button" [routerLink]="'/products'">{{ category.translation }}</button>
+          <!--TODO: Add filtering by category (front + back)-->
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="flex-container featured-products-container">
+    <h3>Featured Products</h3>
+    <br>
+    <div class="flex-container featured-choice-container">
+      <mat-button-toggle-group #group="matButtonToggleGroup" [(ngModel)]="defaultToggleValue" (change)="onToggleChange($event)">
+        <mat-button-toggle value="featured">Featured</mat-button-toggle>
+        <mat-button-toggle value="best">Best Seller</mat-button-toggle>
+        <mat-button-toggle value="new">New Arrivals</mat-button-toggle>
+      </mat-button-toggle-group>
+    </div>
+    <div class="flex-container featured-items-container">
+      <div *ngFor="let item of filteredItems">
+        <div class="flex-container featured-item-container">
+          <img [src]="getItemRandomImage(item.images)">
+          <h3>{{ item.title }}</h3>
+          <h4>${{ item.price }}</h4>
+          <div class="flex-container row-container">
+            <div *ngFor="let color of item.colors" class="flex-container circle" [style.background-color]="color"></div>
+          </div>
+          <br>
+          <div class="flex-container row-container">
+            <div *ngFor="let size of item.sizes" class="flex-container rectangle">
+              <div class="size-text">{{size}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="flex-container latest-products-container">
+    <h3>Latest Products</h3>
+    <br>
+    <div class="flex-container latest-items-container">
+      <div class="flex-container featured-items-container">
+        <div *ngFor="let item of latestItems.slice(0, midpoint)">
+          <div class="flex-container featured-item-container">
+            <img [src]="getItemRandomImage(item.images)">
+            <h3>{{ item.title }}</h3>
+            <h4>${{ item.price }}</h4>
+            <div class="flex-container row-container">
+              <div *ngFor="let color of item.colors" class="flex-container circle" [style.background-color]="color"></div>
+            </div>
+            <br>
+            <div class="flex-container row-container">
+              <div *ngFor="let size of item.sizes" class="flex-container rectangle">
+                <div class="size-text">{{size}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex-container featured-items-container">
+        <div *ngFor="let item of latestItems.slice(midpoint)">
+          <div class="flex-container featured-item-container">
+            <img [src]="getItemRandomImage(item.images)">
+            <h3>{{ item.title }}</h3>
+            <h4>${{ item.price }}</h4>
+            <div class="flex-container row-container">
+              <div *ngFor="let color of item.colors" class="flex-container circle" [style.background-color]="color"></div>
+            </div>
+            <!--TODO: Add favorite icon + logic (front + back)-->
+            <br>
+            <div class="flex-container row-container">
+              <div *ngFor="let size of item.sizes" class="flex-container rectangle">
+                <div class="size-text">{{size}}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

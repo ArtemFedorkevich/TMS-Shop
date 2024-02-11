@@ -1,0 +1,31 @@
+<div class="flex-container products-container">
+  <div class="flex-container logo-container">
+    <img src='../../../assets/images/alt_logo.png'>
+    <div class="logo-overlay-content">
+      <h3 class="white">SUMMER {{currentYear}}</h3>
+      <h1 class="white"><b>Fashion</b></h1>
+      <h4 class="white">Find The Perfect style for you</h4>
+    </div>
+  </div>
+  <div class="flex-container base-container">
+    <div class="flex-container menu-container">Menu in progress</div>
+    <div class="flex-container content-container">
+      <div class="flex-container navigation-container">
+        <mat-form-field appearance="fill">
+          <mat-label>Sort By</mat-label>
+          <mat-select [(value)]="selectedSortOption" (selectionChange)="onSortChange()">
+            <mat-option *ngFor="let option of sortOptions" [value]="option">
+              {{ option }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+           <div class="sort-arrows">
+            <mat-icon (click)="onSortOrderChange('asc')">arrow_upward</mat-icon>
+            <mat-icon (click)="onSortOrderChange('desc')">arrow_downward</mat-icon>
+          </div>
+      </div>
+      <div class="flex-container items-container"></div>
+      <div class="flex-container pagination-container"></div>
+    </div>
+  </div>
+</div>

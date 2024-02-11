@@ -1,11 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
+import { AuthGuard } from "./services/auth-guard.service";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomeComponent },
-  { path: 'products', component: HomeComponent, data: { headerColor: 'black' } },  // TODO: add other component
+  { path: 'home', loadChildren: () => import('./modules/home.module').then(x => x.HomeModule), canActivate: [AuthGuard] },
+  { path: 'account', loadChildren: () => import('./modules/account.module').then(x => x.AccountModule) },
+  { path: 'products', data: { headerColor: 'black' }, loadChildren: () => import('./modules/products.module').then(x => x.ProductsModule), canActivate: [AuthGuard] },
 ];
 
 @NgModule({

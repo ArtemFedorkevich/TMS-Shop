@@ -1,10 +1,279 @@
+* {
+    box-sizing: border-box;
+}
+
+.logo-button {
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
+    letter-spacing: 0.1px;
+    padding: 1rem 2.875rem;
+    background-color: white;
+    color: #2091F9;
+    cursor: pointer;
+    border: 0.0625rem solid blue;
+}
+
+.mat-button-toggle {
+    padding: 0 1.125rem;
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: 0.2px;
+    background-color: transparent;
+    border: none !important;
+    color: #737373;
+    cursor: pointer;
+}
+
+.mat-button-toggle:hover {
+    background-color: transparent;
+    color: #2091F9 !important;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 0.1875rem solid blue !important;
+}
+
+.mat-button-toggle-checked {
+    padding: 0 1.125rem;
+    font-family: Montserrat;
+    font-size: 0.875rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2rem;
+    letter-spacing: 0.2px;
+    background-color: transparent !important;
+    color: #2091F9 !important;
+    cursor: pointer;
+    border-top: none !important;
+    border-left: none !important;
+    border-right: none !important;
+    border-bottom: 0.1875rem solid blue !important;
+}
+
+.mat-button-toggle-group {
+    border: none !important;
+}
+
 .flex-container {
-  display: flex;
+    display: flex;
+}
+
+.home-container {
+    flex-direction: column;
+    align-items: center;
+    height: 196rem;
+    overflow: hidden;
+}
+
+.logo-container {
+    flex: 54;
+    width: 90.25rem;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    position: relative;
 }
 
 .logo-container img {
-  width: 100%;
-  height: auto;
-  max-width: 100%;
-  display: block;
+    object-fit: contain;
+    margin-top: -8.125rem;
+    width: 100%;
+    height: auto;
+}
+
+.logo-container h3 {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem;
+    letter-spacing: 0.1px;
+}
+
+.logo-container h1 {
+    font-family: Montserrat;
+    font-size: 3.625rem;
+    font-style: normal;
+    line-height: 5rem;
+    letter-spacing: 0.2px;
+}
+
+.logo-container h4 {
+    font-size: 1.2790625rem;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.238375rem;
+    letter-spacing: 0.256px;
+}
+
+.white {
+    color: white;
+}
+
+.category-button {
+    color: var(--Light-text, #FFF);
+    text-align: center;
+    font-family: Montserrat;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 1.5rem;
+    letter-spacing: 0.1px;
+    border: 0.0625rem solid #FFF;
+    background: rgba(0, 0, 0, 0.10);
+    padding: 1rem 2.875rem;
+    cursor: pointer;
+}
+
+.logo-overlay-content {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.category-overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.categories-container {
+    flex: 42;
+    overflow: hidden;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.875rem;
+}
+
+.category-container {
+    position: relative;
+    margin: 0.9375rem;
+}
+
+.row-container {
+    flex-direction: row;
+}
+
+.circle {
+    width: 1.875rem;
+    height: 1.875rem;
+    border-radius: 50%;
+    margin-right: 0.3125rem;
+    border: 0.125rem solid white;
+    box-shadow: 0 0.125rem 0.25rem 0 #0000001A;
+}
+
+.rectangle {
+    height: 1.8125rem;
+    padding: 0 0.5rem 0.0625rem 0.5rem;
+    border: 0.0625rem solid black;
+    margin-right: 0.3125rem;
+}
+
+.size-text {
+    font-family: Montserrat;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.75rem;
+    letter-spacing: 0.2rem;
+    text-align: center;
+}
+
+.featured-products-container {
+    flex: 27;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.875rem;
+    border-top: 0.0625rem solid #E9E9E9;
+}
+
+.featured-choice-container {
+    flex-direction: row;
+}
+
+.featured-items-container {
+    padding-top: 2.5rem;
+    flex-direction: row;
+    padding-bottom: 2.5rem;
+}
+
+.featured-item-container {
+    flex-direction: column;
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+}
+
+.featured-item-container img {
+    width: 15.125rem;
+    height: 25.875rem;
+    border-radius: 0.625rem;
+}
+
+.featured-item-container h3 {
+  font-family: Montserrat;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 1.875rem;
+  letter-spacing: 0.0125rem;
+}
+
+.featured-item-container h4 {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 2.375rem;
+    letter-spacing: 0.0125rem;
+}
+
+.latest-products-container {
+    flex:auto;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1.875rem;
+    padding-bottom: 5rem;
+    border-top: 0.0625rem solid #E9E9E9;
+    align-items: center;
+}
+
+.latest-items-container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.latest-items-container .featured-items-container img {
+    width: 15.125rem;
+    height: 11.25rem;
+    border-radius: 0;
+}
+
+.featured-products-container h3 {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem;
+    letter-spacing: 0.1rem;
+}
+
+.latest-products-container h3 {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem;
+    letter-spacing: 0.1rem;
 }

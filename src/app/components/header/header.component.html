@@ -3,16 +3,17 @@
       <div class="flex-container header-info-container">
         <div class="flex-container header-items-outer-container">
           <div class="flex-container header-items-inner-container hides">
-            <a *ngFor="let item of headerItems" href="#">{{ item }}</a>
+            <a *ngFor="let item of headerItems"  [routerLink]="item.route" routerLinkActive="active">{{ item.name }}</a>
           </div>
         </div>
         <div class="flex-container header-main-container">
-          <a href="#" class="flex-container avatar-container hides"><img [src]='imageSources?.user_image' class="flex-container circle margin-right-v1"><span>My Account</span></a>
+          <a routerLink="/account" routerLinkActive="active" class="flex-container avatar-container hides"><img [src]='imageSources?.user_image' class="flex-container circle margin-right-v1"><span>My Account</span></a>
           <a href="#" class="hides"><img [src]='imageSources?.carbon_favorite_image'></a>
           <a href="#"><img [src]='imageSources?.shopping_card_image' class="flex-container circle margin-right-v1"></a>
           <!--TODO: make a shopping_card_white.png with material badge-->
           <a href="#" class="hidden"><img [src]='imageSources?.bx_menu_alt_right_image'></a>
           <!--TODO: this is out of container in mobile version - fix it-->
+          <!-- TODO: changing scale broke headers, footers too long in low scale-->
         </div>
       </div>
   </div>

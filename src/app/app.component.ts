@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter, takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs';
+import { THEME_COLORS } from "./constants/app.constants";
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,8 @@ import { Subject } from 'rxjs';
 })
 export class AppComponent implements OnInit, OnDestroy {
   title = 'TMS-Shop';
-  headerColor: 'black' | 'white' = 'white';
+  headerColor: typeof THEME_COLORS.BLACK | typeof THEME_COLORS.WHITE = THEME_COLORS.WHITE;
+  shouldShowHeaderAndFooter: boolean = true;
   private ngUnsubscribe = new Subject<void>();
 
   constructor(private route: ActivatedRoute, private router: Router) {}
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ).subscribe(() => {
       const currentRouteData = this.route.snapshot.firstChild?.data;
       this.headerColor = currentRouteData?.['headerColor'] || 'white';
+      this.shouldShowHeaderAndFooter = !this.router.url.includes('/account');
     });
   }
 

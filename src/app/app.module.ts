@@ -1,26 +1,48 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { StoreModule } from '@ngrx/store';
 import { AppRoutingModule } from './app-routing.module';
-import { MaterialModule} from "./modules/material/material.module";
+import { MaterialModule } from "./modules/material/material.module";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { AccountService } from './services/account.service';
+import { AccountEffects } from '../store/effects/account.effects';
+import { reducers } from '../store/states/app.states';
+import { TokenInterceptor } from './services/token.interceptor';
+import { ErrorInterceptor } from './services/error.interceptor';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent,
     FooterComponent,
   ],
   imports: [
-    BrowserModule,
+    EffectsModule.forRoot([AccountEffects]),
+    StoreModule.forRoot(reducers, {}),
     AppRoutingModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
     MaterialModule
   ],
-  providers: [],
+  providers: [AccountService,
+  {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+  },
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: ErrorInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

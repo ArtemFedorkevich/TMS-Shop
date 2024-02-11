@@ -1,0 +1,94 @@
+* {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.products-container {
+    flex-direction: column;
+    align-items: center;
+    height: 172rem;
+    overflow: hidden;
+}
+
+.logo-container {
+    flex: 60;
+    width: 90.25rem;
+    justify-content: center;
+    align-items: start;
+    overflow: hidden;
+    position: relative;
+}
+
+.logo-container img {
+    object-fit: contain;
+    margin-top: -8.125rem;
+    width: 100%;
+    height: auto;
+}
+
+.logo-container h3 {
+    font-family: Montserrat;
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 2.25rem;
+    letter-spacing: 0.1px;
+}
+
+.logo-container h1 {
+    font-family: Montserrat;
+    font-size: 3.625rem;
+    font-style: normal;
+    line-height: 5rem;
+    letter-spacing: 0.2px;
+}
+
+.logo-container h4 {
+    font-size: 1.2790625rem;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 2.238375rem;
+    letter-spacing: 0.256px;
+}
+
+.white {
+    color: white;
+}
+
+.logo-overlay-content {
+    position: absolute;
+    top: 64%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.base-container {
+  flex: 260;
+  width: 90.25rem;
+  justify-content: center;
+  align-items: start;
+  overflow: hidden;
+  position: relative;
+  gap: 40px;
+  flex-direction: row;
+  padding: 30px;
+}
+
+.menu-container {
+  width: 30%;
+  background-color: green;
+}
+
+.content-container {
+  flex: 1;
+  background-color: red;
+}
+
+.navigation-container {
+ align-items: center;
+}
